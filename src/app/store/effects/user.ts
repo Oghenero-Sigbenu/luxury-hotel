@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
-import { UsersService } from '../service/users.service';
+import { UsersService } from '../../service/users.service';
 import { Action } from '@ngrx/store';
-import * as fromUsers from '.'
+import * as fromUsers from '..'
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import { IUser } from '../interfaces/user';
+import { IUser } from '../../interfaces/user';
 
  
 
-@Injectable()
+@Injectable() 
 export class UserEffects {
     constructor(private actions$: Actions,
         private userService: UsersService) {

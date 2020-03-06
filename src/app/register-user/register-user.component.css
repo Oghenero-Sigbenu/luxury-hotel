@@ -1,0 +1,9 @@
+.form{
+    width: 400px;
+    margin: 90px auto;
+}
+.form div{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}

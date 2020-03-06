@@ -1,5 +1,5 @@
-import { IUser } from '../interfaces/user';
-import { UserActions, UserActionTypes } from './actions';
+import { IUser } from '../../interfaces/user';
+import { UserActions, UserActionTypes } from '../actions/user';
 
 export interface IUserState {
     data: IUser[];

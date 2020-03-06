@@ -1,2 +1,4 @@
-export * from './actions';
-export * from './reducer';
+export * from './actions/user';
+export * from './reducers/index';
+export * from './actions/rooms';
+
