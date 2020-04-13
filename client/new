@@ -1,0 +1,304 @@
+<div class="table-responsive">
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>Name</th>
+              <th>No of Hosspital </th>
+              <!-- <th>Age</th> -->
+              <th>No of Staff</th>
+              <th>No of Plans</th>
+              <th>Status</th>
+              <!-- <th>TIN</th> -->
+              <!-- <th>Interest %</th> -->
+              <th>Expiry Date</th>
+              <th>View</th>
+            </tr>
+            <tr>
+            <!-- <tr *ngFor="let item of companies"> -->
+              <td class="p-0 ">
+                <!-- <div class="kt-user-card-v2__pic" >
+                  <img alt="image" profile-image [imageBase64]="imgstring" class="rounded-circle" width="35"
+                    data-toggle="tooltip" title="" data-original-title="Wildan Ahdian">
+                </div>
+                <ng-template #defImg>
+                  <div class="kt-user-card-v2__pic">
+                    <div class="kt-badge kt-badge--xl kt-badge--primary">  -->
+                      <!-- {{item.companyName | slice:0:1}} -->
+                    <!-- </div>
+                  </div>
+                </ng-template> -->
+              </td>
+              <!-- <td>{{item.companyName}}</td> -->
+              <td>24 Years</td>
+              <!-- <td>{{item.headOfficeLocation}}</td>
+              <td>{{item.state}} , {{item.city}}</td> -->
+              <td>interestPercentage</td>
+              <td>item</td>
+              <td>
+                <!-- <div class="badge badge-success" >Activated</div> -->
+                  Deactivated
+              </td>
+              <!-- <td>Stage 2 Diabetes</td> -->
+              <!-- <td><div class="badge badge-success">In-patient</div></td> -->
+              <td>
+                <a  class=" icon-left">view</a>
+                <!-- <a routerLink="./../{{item.id}}/detail" class="btn btn-secondary">Detail</a> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+<div class="row">
+    <div class="col-5" *ngIf="company">
+        <div class="kt-portlet kt-portlet--height-fluid-">
+            <br />
+            <div class="kt-portlet__head kt-portlet__head--noborder">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title">
+                    </h3>
+                </div>
+                <div class="kt-portlet__head-toolbar">
+                    <a class="btn btn-icon icon-left btn-danger text-white" *ngIf="company.status !== 'Inactive'" (click)="deactivate.emit(company.id)"><i class="fas fa-times"></i> Deactivate</a>
+                    <a class="btn btn-icon icon-left btn-primary text-white" *ngIf="company.status !== 'Active'" (click)="activate.emit(company.id)"><i class="fas fa-check"></i> Activate</a>
+                </div>
+            </div>
+            <div class="kt-portlet__body">
+
+                <!--begin::Widget -->
+                <div class="kt-widget kt-widget--user-profile-2">
+                    <div class="kt-widget__head">
+                        <div class="kt-widget__media">
+                            <!-- <img class="kt-widget__img kt-hidden-" src="assets/media//users/100_1.jpg" alt="image"> -->
+                            <div class="kt-profile__main-pic" *ngIf="userImage else defImg">
+                                <img profile-image [imageBase64]="userImage" alt="">
+                                <label class="kt-profile__main-pic-upload">
+                                    <i class="flaticon-photo-camera"></i>
+                                    <input type="file" name="kt_apps_user_add_user_avatar" (change)="onImageSelected($event)">
+                                </label>
+                                <p>hhh</p>
+                            </div>
+                            <ng-template #defImg>
+                            <!-- <div
+                                class="kt-widget__pic kt-widget__pic--danger kt-font-danger kt-font-boldest kt-font-light kt-hidden-">
+                                {{company.companyName | slice:0:2}}
+                            </div> -->
+                            <div class="kt-profile__main-pic">
+                                <img src="assets/images/image-holder.png" alt="">
+                                <label class="kt-profile__main-pic-upload">
+                                    <i class="flaticon-photo-camera"></i>
+                                    <input type="file" name="kt_apps_user_add_user_avatar" (change)="onImageSelected($event)">
+                                </label>
+                            </div>
+                              </ng-template>
+                            
+                        </div>
+                        <div class="kt-widget__info">
+                            <a href="#" class="kt-widget__username">
+                                {{company.companyName}}
+                            </a>
+                            <span class="kt-widget__desc">
+                                {{company.state}} , {{company.city}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="kt-widget__body">
+                        <div class="kt-widget__section">
+                            <div class="kt-widget__contact">
+                                <span class="kt-widget__label"><b>Head Office Location:</b></span>
+                            </div>
+                            <br/>
+                            {{company.headOfficeLocation}}
+                        </div>
+                        <div class="kt-widget__content">
+                            <div class="kt-widget__stats kt-margin-r-20">
+                                <div class="kt-widget__icon">
+                                    <i class="flaticon2-group"></i>
+                                </div>
+                                <div class="kt-widget__details">
+                                    <span class="kt-widget__title">Staff Strenght</span>
+                                    <!-- <span class="kt-widget__value">{{company.staffAccounts.length}}</span> -->
+                                </div>
+                            </div>
+                            <div class="kt-widget__stats">
+                                <div class="kt-widget__icon">
+                                    <i class="flaticon-questions-circular-button"></i>
+                                </div>
+                                <div class="kt-widget__details">
+                                    <span class="kt-widget__title">Status</span>
+                                    <span class="kt-widget__value">{{company.status}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kt-widget__item">
+                            <div class="kt-widget__contact">
+                                <span class="kt-widget__label">Contact Name:</span>
+                                <a href="#" class="kt-widget__data">{{company.contactLastName}},
+                                    {{company.contactFirstName}}</a>
+                            </div>
+                            <div class="kt-widget__contact">
+                                <span class="kt-widget__label">Contact MiddleName:</span>
+                                <a href="javascript:;" class="kt-widget__data">{{company.contactMiddleName}}</a>
+                            </div>
+                            <div class="kt-widget__contact">
+                                <span class="kt-widget__label">Email:</span>
+                                <a href="mailto:{{company.contactEmail}}" class="kt-widget__data">{{company.contactEmail}}</a>
+                            </div>
+                            <div class="kt-widget__contact">
+                                <span class="kt-widget__label">Phone:</span>
+                                <a href="tel:{{company.contactPhone}}" class="kt-widget__data">{{company.contactPhone}}</a>
+                            </div>
+                            <!-- <div class="kt-widget__contact">
+                                <span class="kt-widget__label">Company RC Number:</span>
+                                <span class="kt-widget__data">{{company.rCNumber}}</span>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="kt-widget__footer">
+                        <a routerLink="./../../{{company.id}}/edit" class="btn btn-icon icon-left btn-dark"><i class="far fa-file"></i> Update Company
+                            Detail</a>
+                    </div>
+                </div>
+
+                <!--end::Widget -->
+            </div>
+        </div>
+    </div>
+    <div class="col-7" >
+        <div class="card">
+            <div class="card-header">
+              <h4>Company Staff List</h4>
+              <div class="card-header-form">
+                <form>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <div class="input-group-btn">
+                      <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </form>
+              </div> &nbsp;&nbsp;
+              <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Staff</button>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <tbody><tr>
+                    <!-- <th></th> -->
+                    <th>Name</th>
+                    <!-- <th>Designation</th> -->
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                  <!-- <tr *ngFor="let staff of company.staffAccounts">
+                    <td>{{staff.fullName}}</td>
+                    <!-- <td>{{staff.jobTitle}}</td> 
+                    <td>{{staff.emailAddress}}</td>
+                    <td>{{staff.isActive}}</td>
+                    <td><a  class="btn btn-icon icon-left btn-primary text-white"><i class="fa fa-eye"></i></a>
+                    </td>
+                  </tr> -->
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+            <!-- <div class="kt-portlet kt-portlet--height-fluid-">
+                <br />
+                <div class="kt-portlet__head kt-portlet__head--noborder">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Company Staff List
+                        </h3>
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                       
+                            <form>
+                              <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <div class="input-group-btn">
+                                  <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                </div>
+ 
+                <div class="kt-portlet__body">
+                </div>
+            </div> -->
+        </div>
+</div>
+</section>
+<div class="modal fade show" tabindex="-1" role="dialog" id="exampleModal" >
+    <div class="modal-dialog" role="document" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add New Staff</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body"  >
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Employee No</label>
+                        <input type="text" class="form-control"  formControlName="employeeNo">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" formControlName="firstName">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" formControlName="lastName">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Middle Name</label>
+                        <input type="text" class="form-control" formControlName="middleName">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Plan</label>
+                        <ng-select class="custom" [items]="" bindLabel="name" placeholder="Plan"
+                        bindValue="id" formControlName="planId">
+                    </ng-select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Job Title</label>
+                        <input type="text" class="form-control" formControlName="jobTitle">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" formControlName="emailAddress">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer bg-whitesmoke br">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" >Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
